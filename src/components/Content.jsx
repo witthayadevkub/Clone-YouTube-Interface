@@ -102,10 +102,10 @@ const content = () => {
     ]
 
     const [MouseDown, serMouseDown] = useState({})
-    console.log(MouseDown)
+    // console.log(MouseDown)
   return (
 
-    <div>
+    <div className='mx-3 z-3 sm:ml-4 md:ml-5 lg:ml-5'>
         <div className="flex gap-4 my-2 pl-3 flex-wrap ">
             {
                 tag.map((tag, i) => (
@@ -115,9 +115,9 @@ const content = () => {
                 ))
             }
         </div>
-        <div className="grid sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
+        <div className="grid sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 ">
             {data.map((data, i) => (
-                <div key={"content"+i} className="grid grid-rows-[60%_40%] h-[260px]  mx-2 " 
+                <div key={"content"+i} className="grid grid-rows-[60%_40%] h-[280px]  m-2" 
                     onMouseEnter={()=>serMouseDown({[i]:true})}
                     onMouseLeave={()=>serMouseDown({[i]:false})}>
                     <div className="rounded-md relative">

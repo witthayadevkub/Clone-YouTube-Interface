@@ -6,4 +6,13 @@
 
 body {
     font-family: 'Roboto', sans-serif;
+    ::-webkit-scrollbar{
+    width: 6px; 
+    
+}
+::-webkit-scrollbar-thumb{
+    background-color: #C7C8CC;
+    border-radius: 10px;
+
+}    
 }

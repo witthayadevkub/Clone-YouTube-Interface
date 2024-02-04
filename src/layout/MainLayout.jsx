@@ -6,10 +6,10 @@ import Content from '../components/Content'
 const MainLayout = () => {
   return (
     <div className=''>
-      <div className="sticky top-0 w-screen h-[56px] bg-white z-10">
+      <div className="fixed top-0 w-screen h-[56px] bg-white z-10">
         <Navbar/>
       </div>  
-      <div className="grid sm:grid-cols-[15%_1fr] h-[5000px]">
+      <div className="grid sm:grid-cols-[10%_1fr] h-screen pt-[56px]">
        
         <Sidebar />
 

@@ -22,8 +22,8 @@ const TagboxInsiderbar = ({Tag,title}) => {
               <div className=''>
                 {
                   sliceSecTag.map((secTag, i) => (
-                    <div>
-                        <div key={i} className='lg:flex items-center gap-5 py-2 px-2 hover:bg-base hover:rounded-xl'>
+                    <div key={i} >
+                        <div className='lg:flex items-center gap-5 py-2 px-2 hover:bg-base hover:rounded-xl'>
                             {secTag.img 
                             ? <img src={secTag?.img} alt={secTag?.img} className='w-6 h-6 rounded-full object-cover'/> 
                             : <p className='text-2xl'>{secTag?.icon}</p>}

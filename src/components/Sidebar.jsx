@@ -23,6 +23,9 @@ import { BiCommentError } from "react-icons/bi";
 //component
 import TagboxInsiderbar from './TagboxInsiderbar'
 
+//sideData
+// import { mainTag,secTag, follow, explore, more, setting} from '../data/sideData';
+
 const Sidebar = () => {
 
   

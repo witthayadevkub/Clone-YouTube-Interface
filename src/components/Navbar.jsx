@@ -10,13 +10,11 @@ const Navbar = () => {
   return (
     <div className=' flex justify-between items-center h-full  px-2 '>
         <div className="text-blue-600 flex items-center gap-3">
-            <div className='hidden text-xl text-black w-[40px] h-[40px] sm:flex items-center justify-center hover:bg-hoverbase hover:rounded-full'>
+            <div className='hidden text-xl text-black w-[40px] h-[40px] sm:flex items-center justify-center hover:bg-base hover:rounded-full'>
                 <AiOutlineMenu />
             </div>
 
             <div className='flex items-center'>
-                {/* <img src="https://logodownload.org/wp-content/uploads/2014/10/youtube-logo-0.png" alt="" 
-                className='h-[56px] w-[120px] object-cover'/> */}
                 <FaYoutube className='text-2xl mr-[0.1rem] text-iconYube'/>
                 <h1 className='font-semibold text-black'>YouTube</h1>
             </div>
@@ -24,7 +22,7 @@ const Navbar = () => {
         </div>
         <div className="hidden  md:flex gap-3 items-center lg:w-[650px]">
         <div className="flex justify-between border rounded-3xl items-center h-[40px] w-full truncate">
-            <input type="text" placeholder="search" className='pl-4  outline-none'/>
+            <input type="text" placeholder="ค้นหา" className='pl-4  outline-none text-sm'/>
             <div className='text-xl flex items-center justify-center  w-[60px] h-full bg-base hover:bg-hoverbase '>
                 <div><IoIosSearch /></div>
             </div>

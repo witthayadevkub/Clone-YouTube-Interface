@@ -8,8 +8,8 @@ export default {
     extend: {
       colors:{
         'iconYube': '#ed1212',
-        'base': '#C7C8CC',
-        'hoverbase': '#B4B4B8',
+        'base': '#e9eaec',
+        'hoverbase': '#d8d8da',
       }
     },
   },

@@ -1,17 +1,22 @@
-import { useState } from 'react'
+
+import { createContext } from 'react';
 import './App.css'
 import MainLayout from './layout/MainLayout'
 
 //data
-import { data } from './data/data'
+import { data, dataArrays } from './data/data'
+
+export const MyContext = createContext();
+
 function App() {
 
-  console.log(data)
+
+
 
   return (
-  <div>
+  <MyContext.Provider value={dataArrays}>
       <MainLayout/>
-  </div>
+  </MyContext.Provider>
   )
 }
 

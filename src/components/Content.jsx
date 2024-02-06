@@ -1,9 +1,5 @@
 import React,{useState,useContext} from 'react'
-import  cutetiger from '../assets/cute-dev-tiger.jpg'
-// import { IoMdTime } from "react-icons/io";
-// import { HiMenuAlt3 } from "react-icons/hi";
-// import { IoMdMore } from "react-icons/io";
-// import { IoMdCheckmarkCircle } from "react-icons/io";
+// import  cutetiger from '../assets/cute-dev-tiger.jpg'
 import { MyContext } from '../App';
 import ContentVideoBox from './ContentVideoBox';
 
@@ -12,14 +8,14 @@ import ContentVideoBox from './ContentVideoBox';
 
 const content = () => {
     const tag =['เพลง', 'เกม', 'ข่าวสาร', 'ไลฟ์สด', 'ทีวีอนิเมชัน', 'การ์ตูน', 'การทำอาหาร', 'ฟุตบอล','อัปโหลดล่าสุด','ดูแล้ว','วิดิโอใหม่สำหรับคุณ']
-
+    const  imgURL =  `https://picsum.photos/200/300?random=`
     const shortVideos = [
-        {title:'video', img:cutetiger},
-        {title:'video', img:cutetiger},
-        {title:'video', img:cutetiger},
-        {title:'video', img:cutetiger},
-        {title:'video', img:cutetiger},
-        {title:'video', img:cutetiger},
+        {title:'video', img:imgURL},
+        {title:'video', img:imgURL},
+        {title:'video', img:imgURL},
+        {title:'video', img:imgURL},
+        {title:'video', img:imgURL},
+        {title:'video', img:imgURL},
     ]
 
 
@@ -61,11 +57,12 @@ const content = () => {
 
                     <ContentVideoBox DataSlice={DataSlice} index={index}/>
 
+                    
                     <div className='md:hidden lg:block'>
                      <div className='flex gap-3 m-3 '>
                      {shortVideos.map((video,i)=>(
                         <div key={i} className='grid grid-rows-[1fr_15%] h-[500px] w-1/6   overflow-hidden'>
-                            <img src={video.img} alt="" className='border rounded-[15px] h-full object-cover'/>
+                            <img src={`${video.img}${i}`} alt="" className='border rounded-[15px] h-full object-cover'/>
                             <div className='p-2'>
                                 <p>short {video.title}</p>
                                 <p className='text-sm'>การดู 1 ล้าน ครั้ง</p>

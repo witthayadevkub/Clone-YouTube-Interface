@@ -14,5 +14,22 @@ body {
     background-color: #C7C8CC;
     border-radius: 10px;
 
-}    
+}   
+
+
+
+
+/* input[type='range'] {
+    -webkit-appearance: none !important;
+    background:rgb(255, 0, 0);
+    height:3px;
 }
+input[type='range']::-webkit-slider-thumb {
+    -webkit-appearance: none !important;
+    background:rgb(165, 5, 5);
+    height:10px;
+    width:10px;
+    border-radius: 50%;
+} */
+}
+

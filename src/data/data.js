@@ -28,7 +28,8 @@ export const data =[
             period:'26:30',
             time:'4 ชั่วโมง',
             viwe:'500',
-            nameUser:'witthaya feangsap'
+            nameUser:'witthaya feangsap',
+            
         },
         {
             id:2,

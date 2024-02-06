@@ -14,7 +14,7 @@ function App() {
 
 
   return (
-  <MyContext.Provider value={dataArrays}>
+  <MyContext.Provider value={data}>
       <MainLayout/>
   </MyContext.Provider>
   )

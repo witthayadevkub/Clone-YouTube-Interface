@@ -192,16 +192,16 @@ const follow =[
           ))}   
         </div>
 
-        <div>
+        <div className=" sm:hidden md:block">
           {/* boxcomponent */}
             <TagboxInsiderbar Tag={secTag} title={'คุณ'}/>
         </div>
         
-        <div>
+        <div className=" sm:hidden  lg:block"> 
             <TagboxInsiderbar Tag={follow} title={'ติดตาม'}/>
         </div>
 
-        <div className="border-b-2">
+        <div className="border-b-2 sm:hidden  lg:block">
           <p className='flex items-center gap-2 text-[17px]  mt-2 py-2 px-2'>สำรวจ</p>
                   {explore.map(({title, icon}, i) => (
                     
@@ -212,7 +212,7 @@ const follow =[
                   ))}
         </div>
 
-        <div className="border-b-2">
+        <div className="border-b-2 sm:hidden  lg:block">
           <p className='flex items-center gap-2 text-[17px]  mt-2 py-2 px-2'>เพิ่มเติมจาก Youtube</p>
                   {more.map(({title, icon}, i) => (
                     
@@ -223,7 +223,7 @@ const follow =[
                   ))}
         </div>
 
-        <div className="border-b-2">
+        <div className="border-b-2 sm:hidden  md:block">
           
                   {setting.map(({title, icon}, i) => (
                     

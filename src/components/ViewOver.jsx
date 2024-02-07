@@ -6,14 +6,14 @@ import cutetiger from '../assets/cute-dev-tiger.jpg'
 //icons
 import { BsWindowFullscreen } from "react-icons/bs";
 import { LuSquare } from "react-icons/lu";
-import { IoMdExpand, IoIosMore, IoMdTime, IoMdMore, IoMdSettings  } from "react-icons/io";
+import { IoMdExpand, IoIosMore, IoMdTime, IoMdMore, IoMdSettings } from "react-icons/io";
 import { MdOutlineBrandingWatermark } from "react-icons/md";
-import { MdPause, MdVolumeUp, MdVolumeOff, MdClose } from "react-icons/md";
+import { MdPause, MdVolumeUp, MdVolumeOff, MdClose, MdDeleteOutline } from "react-icons/md";
 import { BiSkipPrevious, BiSkipNext } from "react-icons/bi";
 import { PiShareFatLight } from "react-icons/pi";
 import { LiaDownloadSolid } from "react-icons/lia";
 import { RiPlayListAddLine } from "react-icons/ri";
-import { AiOutlineLike, AiOutlineDislike, AiFillLike, AiFillDislike } from "react-icons/ai";
+import { AiOutlineLike, AiFillLike, } from "react-icons/ai";
 import { HiMenuAlt3, HiOutlineMenuAlt2 } from "react-icons/hi";
 import { FaRegSmileBeam } from "react-icons/fa";
 
@@ -23,11 +23,41 @@ const ViewOver = () => {
     const [unLike, setUnLike] = useState(false)
     const [countLike, setCountLike] = useState(0)
     const [more, setMore] = useState(false)
-    const [onChangeComment, setOnChangeComment] = useState()
+    const [onChangeComment, setOnChangeComment] = useState('')
 
+
+
+
+    const { id } = useParams()
+    const contextValue = useContext(MyContext);
+    const dataId = contextValue.filter((data) => data.id == id)
+    // console.log(dataId)
+    const [mouse, setMouse] = useState(false)
+    const [sound, setSound] = useState(true)
+    const handleSound = () => {
+        setSound(!sound)
+    }
     const handleInputChange = (e) => {
         setOnChangeComment(e.target.value);
     };
+
+    //comment
+    const [comment, setComment] = useState([]);
+    // console.log(comment)
+
+    const addComment = () => {
+        if (onChangeComment.trim() !== '') {
+            setComment([...comment, onChangeComment]);
+            setOnChangeComment('');
+        }
+
+    };
+    const removeComment = (index) => {
+        const newComment = [...comment];
+        newComment.splice(index, 1);
+        setComment(newComment);
+    };
+
     const handleLike = () => {
         setLike(true)
         setUnLike(false)
@@ -39,23 +69,14 @@ const ViewOver = () => {
         setCountLike((e) => e - 1)
     }
 
-
-    const { id } = useParams()
-    const contextValue = useContext(MyContext);
-    const dataId = contextValue.filter((data) => data.id == id)
-
-    const [mouse, setMouse] = useState(false)
-    const [sound, setSound] = useState(true)
-    const handleSound = () => {
-        setSound(!sound)
-    }
-
     const [value, setValue] = useState(1);
     const [MouseDown, serMouseDown] = useState({})
     // Function to handle changes in the range input
     const handleChange = (event) => {
         setValue(event.target.value);
     };
+
+
 
     function numberToTime(number) {
         var hours = Math.floor(number / 100); // Extracting hours
@@ -68,7 +89,7 @@ const ViewOver = () => {
     }
 
     //use for change index in link
-    const randomindex = () => Math.floor(Math.random() * 19) + 1;
+    const randomindex = () => Math.floor(Math.random() * 9) + 1;
     if (randomindex == 0) {
         randomindex = 1;
     }
@@ -79,6 +100,8 @@ const ViewOver = () => {
         { title: 'บันทึกวิดิโอ', icon: <RiPlayListAddLine /> },
 
     ]
+
+
 
     return (
         <div>
@@ -117,12 +140,12 @@ const ViewOver = () => {
                                 </div>
                             </div>
                             <div className="">
-                                <h1 className='text-2xl font-bold text-wrap my-3 p-2'>{data.title}</h1>
+                                <h1 className='text-2xl font-bold text-wrap my-3 p-2'>{data.title} : {data.id}</h1>
                                 <div className='flex justify-between'>
                                     <div className='flex gap-4'>
                                         <img src={`${data?.photo}/${data?.id * 10}`} alt={data.title} className='w-10 h-10 rounded-full' />
                                         <div className=''>
-                                            <p className='font-bold '>{data.user}</p>
+                                            <p className='font-bold '>{data.user} : {data.id}</p>
                                             <p className='text-xs text-gray-500'>ผู้ติดตาม {data.viwe} คน</p>
                                         </div>
                                         <div className='text-white px-4 align-middle py-2 bg-black rounded-[20px]'>ติดตาม</div>
@@ -143,8 +166,8 @@ const ViewOver = () => {
                                                 <div className='flex bg-base px-3 h-[35px] items-center hover:bg-hoverbase border-l-2 border-hoverbase'>
 
                                                     {unLike
-                                                        ? <AiFillDislike onClick={() => { setUnLike(!unLike), setCountLike((e) => e + 1) }} className="text-xl " />
-                                                        : <AiOutlineDislike onClick={handleUnLike} className="text-xl " />
+                                                        ? <AiFillLike onClick={() => { setUnLike(!unLike), setCountLike((e) => e + 1) }} className="text-xl rotate-180" />
+                                                        : <AiOutlineLike onClick={handleUnLike} className="text-xl rotate-180" />
                                                     }
 
                                                 </div>
@@ -177,7 +200,7 @@ const ViewOver = () => {
 
                             <div className="">
                                 <div className="my-6 flex gap-5">
-                                    <h5 className='text-xl font-bold'>ความคิดเห็น {data.viwe} รายการ</h5>
+                                    <h5 className='text-xl font-bold'>ความคิดเห็น {comment.length + data.comment.length} รายการ</h5>
                                     <div className='relative '>
                                         <div onClick={() => setMore(!more)} className='flex items-center text-md '>
                                             <HiOutlineMenuAlt2 className='text-xl' />
@@ -203,12 +226,53 @@ const ViewOver = () => {
                                     <div className='flex justify-between'>
                                         <p className='text-lg ml-[3rem]'><FaRegSmileBeam /></p>
                                         <div className="flex gap-4">
-                                            <p className='rounded-3xl px-3 py-2 hover:bg-hoverbase'>ยกเลิก</p>
-                                            <p className='rounded-3xl px-3 py-2 bg-base hover:bg-hoverbase'>ส่งความคิดเห็น</p>
+                                            <p onClick={() => setOnChangeComment('')} className='rounded-3xl px-3 py-2 hover:bg-hoverbase'>ยกเลิก</p>
+                                            <p onClick={addComment} className='rounded-3xl px-3 py-2 bg-base hover:bg-hoverbase'>ส่งความคิดเห็น</p>
                                         </div>
                                     </div>
                                 </div>
+                                <div>
+                                    {comment.map((comment, index) => (
+                                        <div key={index} className='flex gap-3 items-start justify-between mt-7 p-3 shadow-md'>
+                                            <img src={cutetiger} alt="" className='w-10 h-10 rounded-full flex items-start' />
+                                            <div className='flex-1 justify-start'>
+                                                <p className='font-bold'>@user</p>
+                                                <p className='text-sm'>{comment}</p>
+                                                <div className="flex items-center gap-2 pt-2">
+                                                    <AiOutlineLike className='text-[35px] hover:bg-base rounded-full p-2' />
+                                                    <p className='text-xs'>{0}</p>
+                                                    <AiOutlineLike className='rotate-180 text-[35px] hover:bg-base rounded-full p-2' />
+                                                    <p className=' hover:bg-base rounded-full p-2'>ตอบกลับ</p>
+                                                </div>
 
+                                            </div>
+                                            <div>
+                                                <button onClick={() => removeComment(index)} className='text-2xl border hover:bg-base rounded-full p-2'><MdDeleteOutline /></button>
+                                            </div>
+
+                                        </div>
+                                    ))}
+
+                                    {data.comment.map((comment, i) => (
+
+                                        <div key={i} className='flex gap-3 items-start justify-between mt-7 p-3 shadow-md'>
+                                            <img src={cutetiger} alt="" className='w-10 h-10 rounded-full flex items-start' />
+                                            <div className='flex-1 justify-start'>
+                                                <p className='font-bold'>@{comment.user}</p>
+                                                <p className='text-sm'>{comment.comment}</p>
+                                                <div className="flex items-center gap-2 pt-2">
+                                                    <AiOutlineLike className='text-[35px] hover:bg-base rounded-full p-2' />
+                                                    <p className='text-xs'>{0}</p>
+                                                    <AiOutlineLike className='rotate-180 text-[35px] hover:bg-base rounded-full p-2' />
+                                                    <p className=' hover:bg-base rounded-full p-2'>ตอบกลับ</p>
+                                                </div>
+
+                                            </div>
+                                            
+                                        </div>
+                                    ))}
+
+                                </div>
 
                             </div>
 
@@ -218,6 +282,8 @@ const ViewOver = () => {
 
 
                 </div>
+
+                {/* content-right */}
                 <div>
                     <div className=' w-full h-[700px] grid grid-flow-rows-[10%_1fr] border rounded-lg'>
                         <div className="flex justify-between items-center m-3">

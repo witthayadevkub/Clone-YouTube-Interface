@@ -11,9 +11,9 @@ const ContentVideoBox = ({ DataSlice, index }) => {
     return (
 
         <div className="grid sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 ">
-            {DataSlice[index].map((data, i) => (
-                <Link to={`/view/${data.id}`}>
-                    <div key={data.id} className="grid grid-rows-[60%_40%] h-[280px]  m-2"
+            {DataSlice[index].map((data) => (
+                <Link key={data.id} to={`/view/${data.id}`}>
+                    <div  className="grid grid-rows-[60%_40%] h-[280px]  m-2"
                         onMouseEnter={() => serMouseDown({ [data.id]: true })}
                         onMouseLeave={() => serMouseDown({ [data.id]: false })}
                     >

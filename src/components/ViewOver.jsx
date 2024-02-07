@@ -58,17 +58,6 @@ const ViewOver = () => {
         setComment(newComment);
     };
 
-    const handleLike = () => {
-        setLike(true)
-        setUnLike(false)
-        setCountLike((e) => e + 1)
-    }
-    const handleUnLike = () => {
-        setLike(false)
-        setUnLike(true)
-        setCountLike((e) => e - 1)
-    }
-
     const [value, setValue] = useState(1);
     const [MouseDown, serMouseDown] = useState({})
     // Function to handle changes in the range input
@@ -123,7 +112,7 @@ const ViewOver = () => {
                                         <MdPause className='size-9' />
                                         <Link to={`/view/${randomindex()}`}><BiSkipNext className='size-10' /></Link>
 
-                                        {sound ? <MdVolumeUp onClick={handleSound} onMouseDown={() => setMouse(!mouse)} className='size-7 ' /> : <MdVolumeOff onClick={handleSound} className='size-7 ' />}
+                                        {sound ? <MdVolumeUp onClick={handleSound} onMouseDown={() => setMouse(!mouse)} className='size-7 cursor-pointer ' /> : <MdVolumeOff onClick={handleSound} className='size-7 cursor-pointer ' />}
                                         {sound && <input type="range" id="volume" name="volume" min="0" max="5" className={`h-3  ${mouse ? 'block' : 'hidden'}`} />}
 
                                         <p >{numberToTime(value)}/{data.period}</p>
@@ -133,7 +122,7 @@ const ViewOver = () => {
                                         <BsWindowFullscreen className='size-6' />
                                         <IoMdSettings className='size-7' />
                                         <MdOutlineBrandingWatermark className='size-7' />
-                                        <Link to="/"><LuSquare className='size-7' /></Link>
+                                        <Link to="/"><LuSquare className='size-7 hover:text-red-500' /></Link>
 
                                         <IoMdExpand className='size-7' />
                                     </div>
@@ -156,18 +145,18 @@ const ViewOver = () => {
                                             <div className="flex   items-center ">
                                                 <div className='flex gap-2 px-3 h-[35px] items-center bg-base hover:bg-hoverbase'>
 
-                                                    {like
-                                                        ? <AiFillLike onClick={() => { setLike(!like), setCountLike((e) => e - 1) }} className="text-xl" />
-                                                        : <AiOutlineLike onClick={handleLike} className="text-xl" />
+                                                    {like 
+                                                        ? <AiFillLike onClick={() => { setLike(false), setUnLike(false), setCountLike(0)}} className="text-xl cursor-pointer" />
+                                                        : <AiOutlineLike onClick={() => { setLike(true),setUnLike(false), setCountLike(+1) }} className="text-xl cursor-pointer" />
                                                     }
 
-                                                    <p className='text-xs'>{Number(data.viwe) + countLike}</p>
+                                                    <p className='text-xs'>{Number(data.viwe)+countLike}</p>
                                                 </div>
                                                 <div className='flex bg-base px-3 h-[35px] items-center hover:bg-hoverbase border-l-2 border-hoverbase'>
 
-                                                    {unLike
-                                                        ? <AiFillLike onClick={() => { setUnLike(!unLike), setCountLike((e) => e + 1) }} className="text-xl rotate-180" />
-                                                        : <AiOutlineLike onClick={handleUnLike} className="text-xl rotate-180" />
+                                                    {unLike 
+                                                        ? <AiFillLike onClick={() => { setUnLike(false), setLike(false), setCountLike(0)}} className="text-xl rotate-180 cursor-pointer" />
+                                                        : <AiOutlineLike onClick={() => { setUnLike(true),setLike(false), setCountLike(-1) }} className="text-xl rotate-180 cursor-pointer" />
                                                     }
 
                                                 </div>
@@ -201,7 +190,7 @@ const ViewOver = () => {
                             <div className="">
                                 <div className="my-6 flex gap-5">
                                     <h5 className='text-xl font-bold'>ความคิดเห็น {comment.length + data.comment.length} รายการ</h5>
-                                    <div className='relative '>
+                                    <div className='relative cursor-pointer'>
                                         <div onClick={() => setMore(!more)} className='flex items-center text-md '>
                                             <HiOutlineMenuAlt2 className='text-xl' />
                                             <p>จัดเรียงตาม</p>
@@ -226,8 +215,8 @@ const ViewOver = () => {
                                     <div className='flex justify-between'>
                                         <p className='text-lg ml-[3rem]'><FaRegSmileBeam /></p>
                                         <div className="flex gap-4">
-                                            <p onClick={() => setOnChangeComment('')} className='rounded-3xl px-3 py-2 hover:bg-hoverbase'>ยกเลิก</p>
-                                            <p onClick={addComment} className='rounded-3xl px-3 py-2 bg-base hover:bg-hoverbase'>ส่งความคิดเห็น</p>
+                                            <p onClick={() => setOnChangeComment('')} className='rounded-3xl cursor-pointer px-3 py-2 hover:bg-hoverbase'>ยกเลิก</p>
+                                            <p onClick={addComment} className='rounded-3xl px-3 py-2 cursor-pointer bg-base hover:bg-hoverbase'>ส่งความคิดเห็น</p>
                                         </div>
                                     </div>
                                 </div>

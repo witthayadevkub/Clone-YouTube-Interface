@@ -16,7 +16,7 @@ const MainLayout = () => {
             <Routes>
 
                 <Route  path="*"exact element={
-                  <div className="grid sm:grid-cols-[10%_1fr] h-auto pt-[56px] ">
+                  <div className="grid  sm:grid-cols-[10%_1fr] h-auto pt-[56px] ">
                     <Sidebar/> 
                     <Content/>
                   </div>

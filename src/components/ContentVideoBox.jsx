@@ -10,17 +10,17 @@ const ContentVideoBox = ({ DataSlice, index }) => {
     const [MouseDown, serMouseDown] = useState({})
     return (
 
-        <div className="grid sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 ">
+        <div className="grid sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 sm:p-2 gap-3">
             {DataSlice[index].map((data) => (
                 <Link key={data.id} to={`/view/${data.id}`}>
-                    <div  className="grid grid-rows-[60%_40%] h-[280px]  m-2"
+                    <div  className="grid grid-rows-[60%_40%] h-[280px]  lg:w-full lg:m-2"
                         onMouseEnter={() => serMouseDown({ [data.id]: true })}
                         onMouseLeave={() => serMouseDown({ [data.id]: false })}
                     >
 
                         <div className="rounded-md relative">
-                            {!data.photo && <img src={cutetiger} alt="" className='w-full h-full object-cover rounded-xl border' />}
-                            {data.photo && <img src={`${data?.photo}/${data?.id * 10}`} alt="" className='w-full h-full object-cover rounded-xl border hover:rounded-none transition ease-in-out' />}
+                            {!data.photo && <img src={cutetiger} alt="" className='w-full h-full object-cover sm:rounded-xl border' />}
+                            {data.photo && <img src={`${data?.photo}/${data?.id * 10}`} alt="" className='w-full h-full object-cover sm:rounded-xl border hover:rounded-none transition ease-in-out' />}
                             <div className="absolute text-white text-xs bottom-1 right-2 bg-black px-1 rounded-sm">{data.period}</div>
 
                             {

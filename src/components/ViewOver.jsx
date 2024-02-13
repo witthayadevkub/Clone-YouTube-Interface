@@ -98,33 +98,34 @@ const ViewOver = () => {
                 <div className=''>
                     {dataId.map((data) => (
                         <div key={data.id}>
-                            <div className="w-full h-[500px] sm:h-[500px] lg:h-[700px] relative ">
+                            <div className="w-full h-[200px] sm:h-[450px] xl:h-[600px] relative ">
                                 <div>
-                                    <input type="range" id="volume" name="volume" min="0" max={data.period.replace(':', '')} value={value} onChange={handleChange} className='w-full absolute bottom-[10%]  h-[3px] in-range:border-green-500' />
+                                    <input type="range" id="volume" name="volume" min="0" max={data.period.replace(':', '')} value={value} onChange={handleChange} 
+                                    className='w-full absolute bottom-[20%] sm:bottom-[10%]  h-[3px] in-range:border-green-500' />
                                 </div>
-                                <img src={`${data?.photo}/${data?.id * 10}`} alt={data.title} className="w-full h-full rounded-[1rem] border" />
+                                <img src={`${data?.photo}/${data?.id * 10}`} alt={data.title} className="w-full h-full lg:rounded-[1rem] border" />
 
-                                <div className='absolute bottom-1 w-full px-10 text-white flex justify-between items-center'>
+                                <div className='absolute bottom-1 w-full px-1 lg:px-10 text-white flex justify-between items-center'>
 
                                     <div className='flex gap-1 items-center'>
 
-                                        <Link to={`/view/${randomindex()}`}><BiSkipPrevious className='size-10' /></Link>
-                                        <MdPause className='size-9' />
-                                        <Link to={`/view/${randomindex()}`}><BiSkipNext className='size-10' /></Link>
+                                        <Link to={`/view/${randomindex()}`}><BiSkipPrevious className='size-7 sm:size-8 lg:size-10' /></Link>
+                                        <MdPause className='size-5 sm:size-7 lg:size-9' />
+                                        <Link to={`/view/${randomindex()}`}><BiSkipNext className='size-7 sm:size-8 lg:size-10' /></Link>
 
-                                        {sound ? <MdVolumeUp onClick={handleSound} onMouseDown={() => setMouse(!mouse)} className='size-7 cursor-pointer ' /> : <MdVolumeOff onClick={handleSound} className='size-7 cursor-pointer ' />}
-                                        {sound && <input type="range" id="volume" name="volume" min="0" max="5" className={`h-3  ${mouse ? 'block' : 'hidden'}`} />}
+                                        {sound ? <MdVolumeUp onClick={handleSound} onMouseDown={() => setMouse(!mouse)} className='sm:size-5 lg:size-7 cursor-pointer ' /> : <MdVolumeOff onClick={handleSound} className='sm:size-5 lg:size-7 cursor-pointer ' />}
+                                        {sound && <input type="range" id="volume" name="volume" min="0" max="5" className={`h-3 size-8   ${mouse ? 'block' : 'hidden'}`} />}
 
-                                        <p >{numberToTime(value)}/{data.period}</p>
+                                        <p className='text-sm sm:text-sm md:text-md lg:text-lg'>{numberToTime(value)}/{data.period}</p>
                                     </div>
 
                                     <div className='flex gap-5 items-center '>
-                                        <BsWindowFullscreen className='size-6' />
-                                        <IoMdSettings className='size-7' />
-                                        <MdOutlineBrandingWatermark className='size-7' />
-                                        <Link to="/"><LuSquare className='size-7 hover:text-red-500' /></Link>
+                                        <BsWindowFullscreen className='sm:size-4 lg:size-6 hidden sm:block' />
+                                        <IoMdSettings className='sm:size-4 lg:size-7' />
+                                        <MdOutlineBrandingWatermark className='sm:size-5 lg:size-7 hidden sm:block' />
+                                        <Link to="/"><LuSquare className='sm:size-5 lg:size-7 hover:text-red-500' /></Link>
 
-                                        <IoMdExpand className='size-7' />
+                                        <IoMdExpand className='sm:size-5 lg:size-7' />
                                     </div>
                                 </div>
                             </div>
@@ -137,12 +138,12 @@ const ViewOver = () => {
                                             <p className='font-bold '>{data.user} : {data.id}</p>
                                             <p className='text-xs text-gray-500'>ผู้ติดตาม {data.viwe} คน</p>
                                         </div>
-                                        <div className='text-white px-4 align-middle py-2 bg-black rounded-[20px]'>ติดตาม</div>
+                                        <div className='text-white px-4 align-middle py-2 bg-black rounded-[20px] hidden sm:block'>ติดตาม</div>
                                     </div>
                                     <div className='flex gap-3 items-top'>
 
-                                        <div className='flex items-center rounded-[20px] overflow-hidden'>
-                                            <div className="flex   items-center ">
+                                        <div className='flex items-center rounded-[20px] overflow-hidden '>
+                                            <div className="flex   items-center">
                                                 <div className='flex gap-2 px-3 h-[35px] items-center bg-base hover:bg-hoverbase'>
 
                                                     {like 
@@ -176,7 +177,7 @@ const ViewOver = () => {
                                             </div>
 
                                         </div>
-                                        <div className=' bg-base flex gap-2 justify-center items-center px-3 h-[35px] rounded-[20px] hover:bg-hoverbase'>
+                                        <div className='hidden bg-base sm:flex gap-2 justify-center items-center px-3 h-[35px] rounded-[20px] hover:bg-hoverbase'>
                                             <div className="lg:text-lg xl:text-xl"><IoIosMore /></div>
                                         </div>
                                     </div>

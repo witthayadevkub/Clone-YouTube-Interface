@@ -38,7 +38,7 @@ const content = () => {
 
   return (
 
-    <div className='mx-3 z-3 sm:ml-4 md:ml-5 lg:ml-5'>
+    <div className='md:mx-3 z-3 sm:ml-4 md:ml-5 lg:ml-5'>
         <div className="flex gap-4 my-2 pl-3 flex-wrap items-center ">
             <div className="text-xs  px-3 py-2 bg-black text-white rounded-md ">
                 <p>ทั้งหมด</p>
@@ -58,14 +58,14 @@ const content = () => {
                     <ContentVideoBox DataSlice={DataSlice} index={index}/>
 
                     
-                    <div className='md:hidden lg:block'>
-                     <div className='flex gap-3 m-3 '>
+                    <div className='hidden md:block '>
+                     <div className='flex gap-3 p-3 '>
                      {shortVideos.map((video,i)=>(
-                        <div key={i} className='grid grid-rows-[1fr_15%] h-[500px] w-1/6   overflow-hidden'>
+                        <div key={i} className='grid grid-rows-[1fr_15%] lg:h-[500px]   '>
                             <img src={`${video.img}${i}`} alt="" className='border rounded-[15px] h-full object-cover'/>
                             <div className='p-2'>
                                 <p>short {video.title}</p>
-                                <p className='text-sm'>การดู 1 ล้าน ครั้ง</p>
+                                <p className='sm:text-[0.7rem]'>การดู 1 ล้าน ครั้ง</p>
                             </div>
                         </div>
                     ))}
